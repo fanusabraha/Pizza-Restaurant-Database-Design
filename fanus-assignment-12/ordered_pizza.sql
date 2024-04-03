@@ -32,17 +32,18 @@ join ordered_pizza op on op.order_id = o.order_id
 join pizza p on op.pizza_id = p.pizza_id
 group by c.name;
 
+-- Q5 calculating daily prices
+select c.name as customer_name, date(o.order_date) as Date_of_order, sum(p.price)  as total_price from customer c
+join customer_order co on c.customer_id= co.customer_id
+join `order` o on o.order_id = co.order_id
+join ordered_pizza op on op.order_id = o.order_id
+join pizza p on op.pizza_id = p.pizza_id
+group by c.name, o.order_date ;
+
 select * from customer c
 join customer_order co on c.customer_id= co.customer_id
 join `order` o on o.order_id = co.order_id
 join ordered_pizza op on op.order_id = o.order_id
 join pizza p on op.pizza_id = p.pizza_id;
 
-
-
-select * from customer left join customer_order on customer.customer_id= customer_order.customer_id
-left join `order` on `order`.order_id = customer_order.order_id
-left join ordered_pizza on ordered_pizza.order_id = `order`.order_id
- left join pizza on ordered_pizza.pizza_id = pizza.pizza_id;
- 
  
