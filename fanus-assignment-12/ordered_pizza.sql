@@ -24,6 +24,7 @@ select * from ordered_pizza;
 select * from customer;
 select * from pizza;
 
+-- Q4 calculating every customers price
 select c.name as customer_name, sum(p.price)  as total_price from customer c
 join customer_order co on c.customer_id= co.customer_id
 join `order` o on o.order_id = co.order_id
