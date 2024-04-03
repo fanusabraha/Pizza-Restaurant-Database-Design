@@ -16,18 +16,3 @@ create table customer_order (
   -- john doe order pizzas on the first order
   insert into customer_order (customer_id, order_id) values (2,8), (2,9), (2,10), (2,11);
   
-  set foreign_key_checks =0;
-  alter table pizza_order drop foreign key 
-  `pizza_order_ibfk_2`;
-  
-  select * from pizza;
-  select * from customer_order;
-  select * from ordered_pizza;
-  
-  
-  
-select * from customer left join ordered_pizza on customer.customer_id= ordered_pizza.customer_id
- left join pizza on ordered_pizza.pizza_id = pizza.pizza_id 
- left join pizza_order on pizza.pizza_id = pizza_order.pizza_id
- left join `order` on pizza_order.order_id = `order`.order_id; 
- 

@@ -8,6 +8,3 @@ values ( 'Pepperoni_Cheese', 7.99),
 		('vegetarian', 7.99), 
         ( 'Meat_lovers', 14.99), 
         ('Hawaiian', 12.99);
-
-
-select * from pizza;

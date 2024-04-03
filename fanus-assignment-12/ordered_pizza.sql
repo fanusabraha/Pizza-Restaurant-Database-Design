@@ -4,10 +4,6 @@ pizza_id int,
 foreign key (order_id) references `order` (order_id),
 foreign key (pizza_id) references pizza(pizza_id));
 
-
--- alter table ordered_pizza add column  order_id int ;
-delete from ordered_pizza where customer_id = 2; 
-
 -- trevor page order pizzas
 insert into ordered_pizza (order_id, pizza_id) values (1,1), (2,3);
 
@@ -20,9 +16,13 @@ insert into ordered_pizza (order_id, pizza_id) values (6,3), (7,4);
 -- john doe order pizzas second order
 insert into ordered_pizza (order_id, pizza_id) values (8,2), (9,2), (10,2), (11,4);
 
-select * from ordered_pizza;
-select * from customer;
-select * from pizza;
+
+-- final result
+select * from customer c
+join customer_order co on c.customer_id= co.customer_id
+join `order` o on o.order_id = co.order_id
+join ordered_pizza op on op.order_id = o.order_id
+join pizza p on op.pizza_id = p.pizza_id;
 
 -- Q4 calculating every customers price
 select c.name as customer_name, sum(p.price)  as total_price from customer c
@@ -39,11 +39,5 @@ join `order` o on o.order_id = co.order_id
 join ordered_pizza op on op.order_id = o.order_id
 join pizza p on op.pizza_id = p.pizza_id
 group by c.name, o.order_date ;
-
-select * from customer c
-join customer_order co on c.customer_id= co.customer_id
-join `order` o on o.order_id = co.order_id
-join ordered_pizza op on op.order_id = o.order_id
-join pizza p on op.pizza_id = p.pizza_id;
 
  
