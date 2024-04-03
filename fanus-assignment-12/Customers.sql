@@ -1,7 +1,6 @@
 create table ordered_pizza (
-customer_id int,
-pizza_id int,
-foreign key (customer_id) references customer (customer_id),
-foreign key (pizza_id) references pizza(pizza_id));
+customer_id int auto_increment primary key,
+`name` varchar(40),
+phone_number double);
 
 
